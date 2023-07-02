@@ -3,13 +3,31 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: ShenDin's Blog
+subtitle: '人生如梦'
 description: ''
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: Shen Din
+language: zh-CN
+timezone: 'Asia/Shanghai'
+
+# Music Display
+music:
+  enable: true
+  title: 		   # non-fixed mode works
+    enable: true
+    show: Listen to music
+  server: netease   # require music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    # require song, playlist, album, search, artist
+  id: 503838841     # require song id / playlist id / album id / search keyword
+  fixed: false      # enable fixed mode
+  autoplay: false   # audio atuoplay
+  theme: '#42b983'
+  loop: 'all'       # player loop play, values: 'all', 'one', 'none'
+  order: 'random'   # player play order, values: 'list', 'random'
+  preload: 'auto'   # values: 'none', 'metadata', 'auto'
+  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  listFolded: true  # indicate whether list should folded at first
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -97,9 +115,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:DhuShen/DhuShen.github.io.git
+  branch: pages
