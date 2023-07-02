@@ -401,7 +401,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="DeepLabV3神经网络介绍"><a href="#DeepLabV3神经网络介绍" class="headerlink" title="DeepLabV3神经网络介绍"></a>DeepLabV3神经网络介绍</h2><p>该网络是于2018年提出的语义分割模型，以deeplabv3为encoder为架构，在此基础上加入了Decoder模块细化分割结果。并将Depthwise separable convolution在ASPP和Decoder上的应用。</p>
-<p><img src="http://rx4hz3911.hd-bkt.clouddn.com/e3896d4867794435be4c037a46d2b152.png?e=1688287802&token=olBTHGuXEImSoHAmngLt6bUUy9PLJ4BB-VVuE1Gf:gGqNxQZqO-yoYcISM_7Z6X45KtE="></p>
+<p><img src="http://rx4hz3911.hd-bkt.clouddn.com/e3896d4867794435be4c037a46d2b152.png"></p>
 <p><strong>Encoder：</strong><br>首先图片进入Encoder里面进行特征提取，经过DCNN（深度卷积神经网络）生成两个有效特征层，分别为浅层特征层和深层特征层，浅层特征层的高和宽会大一些，而深层特征层的下采样会多一些，所以高和宽会小一些。在Encoder中，我们会使用不同膨胀率的膨胀卷积进行特征提取，其中有膨胀率分别为6,12,18的3x3卷积，用来提高网络的感受野，使得网络有不同的特征感受情况，之后将特征层进行堆叠，再经过1x1卷积进行通道数调整，获得绿色特征层。</p>
 <p><strong>Decoder:</strong><br> 由DCNN生成的浅层特征层进入到Decoder解码器中，由编码器生成的具有高语义信息的绿色特征层进入到Decoder中进行上采样，之后与较浅的特征经过1x1卷积得到的结果进行特征融合，之后经过3x3的卷积进行特征提取，最终经过上采样将输出图片与输入图片大小一致，得到预测结果。</p>
 <h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2><blockquote><p>之前所做的项目需要分割出苹果健康的区域，损坏的区域，以及背景，以便后续的图像处理操作，采用了该模型进行语义分割处理。<br>本项目数据集来自kaggle <a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/sergeynesteruk/apple-rotting-segmentation-problem-in-the-wild">https://www.kaggle.com/datasets/sergeynesteruk/apple-rotting-segmentation-problem-in-the-wild</a></p>
@@ -435,11 +435,11 @@
 <td>0.0003</td>
 </tr>
 </tbody></table>
-<h4 id="训练曲线"><a href="#训练曲线" class="headerlink" title="训练曲线"></a>训练曲线</h4><p><img src="http://rx4hz3911.hd-bkt.clouddn.com/img.png?e=1688289230&token=olBTHGuXEImSoHAmngLt6bUUy9PLJ4BB-VVuE1Gf:J94AlZ6-Eap4S3kupYLTQu4-uU4="><br><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_1.png?e=1688289360&token=olBTHGuXEImSoHAmngLt6bUUy9PLJ4BB-VVuE1Gf:h4ZRHD-JMEWAazOqubf8xUBamTY="></p>
+<h4 id="训练曲线"><a href="#训练曲线" class="headerlink" title="训练曲线"></a>训练曲线</h4><p><img src="http://rx4hz3911.hd-bkt.clouddn.com/img.png"><br><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_1.png"></p>
 <h3 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h3><p>采用平均交并比评价训练结果，其中miou:86.11584745762715,结果较好</p>
 <blockquote><p>黑色部分为背景，绿色部分为健康区域，红部分为腐败破损区域<br>第一行为原图，第二行为目标图，第三行为预测图</p>
 </blockquote>
-<p><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_3.png?e=1688289601&token=olBTHGuXEImSoHAmngLt6bUUy9PLJ4BB-VVuE1Gf:nCK6RhR4CdjJQIDCQ_YeV1G8i8o="><br><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_3.png?e=1688289743&token=olBTHGuXEImSoHAmngLt6bUUy9PLJ4BB-VVuE1Gf:bA46VfgpD5NglsqXaobRGB-0m_Y="></p>
+<p><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_3.png"><br><img src="http://rx4hz3911.hd-bkt.clouddn.com/img_3.png"></p>
 
                 
             </div>
@@ -566,8 +566,7 @@
                 <a href="/2023/07/02/dase-work-concluaion/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="华师大数据学院夏令营项目总结">
+                        <img src="http://rx4hz3911.hd-bkt.clouddn.com/src=http%20__c-ssl.duitang.com_uploads_item_201804_28_20180428115829_mpivy.thumb.1000_0.jpg&refer=http%20__c-ssl.duitang.webp" class="responsive-img" alt="华师大数据学院夏令营项目总结">
                         
                         <span class="card-title">华师大数据学院夏令营项目总结</span>
                     </div>
@@ -851,7 +850,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.5k</span>
+                        class="white-color">2.5k</span>
             
             
             
