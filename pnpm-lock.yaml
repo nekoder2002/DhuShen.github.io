@@ -6,6 +6,7 @@ specifiers:
   hexo-generator-archive: ^2.0.0
   hexo-generator-category: ^2.0.0
   hexo-generator-index: ^3.0.0
+  hexo-generator-search: ^2.4.3
   hexo-generator-tag: ^2.0.0
   hexo-renderer-ejs: ^2.0.0
   hexo-renderer-marked: ^6.0.0
@@ -20,6 +21,7 @@ dependencies:
   hexo-generator-archive: registry.npmmirror.com/hexo-generator-archive/2.0.0
   hexo-generator-category: registry.npmmirror.com/hexo-generator-category/2.0.0
   hexo-generator-index: registry.npmmirror.com/hexo-generator-index/3.0.0
+  hexo-generator-search: registry.npmmirror.com/hexo-generator-search/2.4.3
   hexo-generator-tag: registry.npmmirror.com/hexo-generator-tag/2.0.0
   hexo-renderer-ejs: registry.npmmirror.com/hexo-renderer-ejs/2.0.0
   hexo-renderer-marked: registry.npmmirror.com/hexo-renderer-marked/6.1.0
@@ -855,6 +857,18 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       hexo-pagination: registry.npmmirror.com/hexo-pagination/3.0.0
+    dev: false
+
+  registry.npmmirror.com/hexo-generator-search/2.4.3:
+    resolution: {integrity: sha512-Z5hfZq2g3np/Tgdp2q9HobfIvU6Pdz89tnTurc1IIq/vW0MHgDynk0Aiv6kvMtKWthnZ5l0iEMT3YLN35NdYwQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hexo-generator-search/-/hexo-generator-search-2.4.3.tgz}
+    name: hexo-generator-search
+    version: 2.4.3
+    engines: {node: '>= 0.10.0'}
+    dependencies:
+      nunjucks: registry.npmmirror.com/nunjucks/3.2.4
+      utils-merge: registry.npmmirror.com/utils-merge/1.0.1
+    transitivePeerDependencies:
+      - chokidar
     dev: false
 
   registry.npmmirror.com/hexo-generator-tag/2.0.0:

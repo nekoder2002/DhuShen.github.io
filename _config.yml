@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: ShenDin's Blog
+title: Din's Blog
 subtitle: '人生如梦'
 description: ''
 keywords:
@@ -31,7 +31,7 @@ music:
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://dhushen.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -123,3 +123,8 @@ deploy:
   type: git
   repo: git@github.com:DhuShen/DhuShen.github.io.git
   branch: pages
+
+# Search
+search:
+  path: search.xml
+  field: post
