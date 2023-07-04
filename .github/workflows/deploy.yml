@@ -16,7 +16,7 @@ env:
   # Hexo 编译后使用此 git 邮箱部署到 github 仓库
   GIT_EMAIL: massd2002@163.com
   # Hexo 编译后要部署的 github 仓库
-  GIT_DEPLOY_REPO: /dhushen.github.io
+  GIT_DEPLOY_REPO: dhushen/dhushen.github.io
   # Hexo 编译后要部署到的分支
   GIT_DEPLOY_BRANCH: pages
 
@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04]
-        node_version: [18.x]
+        node_version: [12.x]
 
     steps:
       - name: Checkout
@@ -60,7 +60,6 @@ jobs:
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           # coding 已取消同步
           ssh-keyscan -t rsa e.coding.net >> ~/.ssh/known_hosts
-          ssh-keyscan -t rsa gitee.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
 
@@ -70,7 +69,7 @@ jobs:
                npm install
           # 根据你安装的组件进行安装
                npm uninstall hexo-generator-index --save
-               npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
+               npm install hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git hexo-generator-search hexo-wordcount --save
           # 复制中文语言包，解决菜单英文的问题
                cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
