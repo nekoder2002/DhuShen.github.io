@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04]
-        node_version: [12.x]
+        node_version: [18.x]
 
     steps:
       - name: Checkout
@@ -66,7 +66,6 @@ jobs:
         run: |
                npm install hexo-cli -g
                npm install
-               npm uninstall hexo-generator-index --save
                npm install hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git hexo-generator-search hexo-wordcount --save
                cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
