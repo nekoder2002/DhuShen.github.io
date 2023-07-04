@@ -64,7 +64,7 @@ jobs:
         run: |
                npm install hexo-cli -g
                npm install
-               npm install hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git hexo-generator-search hexo-wordcount --save
+               npm install hexo-deployer-git hexo-generator-category hexo-renderer-ejs hexo-renderer-marked hexo-generator-tag hexo-generator-archive hexo-generator-index hexo-deployer-git hexo-generator-search hexo-renderer-stylus hexo-server hexo-wordcount --save
 
       - name: Deploy hexo
         run: |
