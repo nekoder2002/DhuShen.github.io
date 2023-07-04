@@ -63,7 +63,66 @@ matery主题集成了静态博客里主流的功能，配置灵活，有些相�
 
 音乐播放（左下角），搜索（右上角），留言板（右下角）
 
+<img src="http://rx4hz3911.hd-bkt.clouddn.com/image-20230704150942854.png" alt="image-20230704150942854" style="zoom:50%;" />
+
+
+
+<img src="http://rx4hz3911.hd-bkt.clouddn.com/image-20230704144730839.png" alt="image-20230704144730839" style="zoom: 35%;" />
+
+<img src="http://rx4hz3911.hd-bkt.clouddn.com/image-20230704144832190.png" alt="image-20230704144832190" style="zoom:50%;" />
+
 ## 博客功能实现及其技术选择
+- 本博客的项目结构如下所示：
+
+```bash
+├── _config.yml	    #站点配置文件
+├── db.json            #缓存文件
+├── debug.log       #hexo s --debug 产生的日志文件
+├── node_modules    #nodejs 本地包
+├── package.json    #nodejs 本地配置信息
+├── public               #生成的静态文件所在的文件夹
+├── scaffolds          #新生成page的模板
+├── source             #文章所在文件夹
+|	├──_posts		   #文章存放处
+└── themes           #主题所在文件夹
+```
+
+- 本博客所用的包信息如下所示：
+
+
+```bash
+{
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "6.3.0"
+  },
+  "dependencies": {
+    "hexo": "^6.3.0",
+    "hexo-deployer-git": "^4.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-search": "^2.4.3",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-landscape": "^1.0.0",
+    "hexo-wordcount": "^6.0.1"
+  }
+}
+```
+- 本博客所有图片存储在`七牛云`（官网：https://portal.qiniu.com）存储服务器上
+
 
 ### 搜索功能
 
@@ -79,7 +138,14 @@ search:
 
 留言板使用DaoVoice插件（官网：http://dashboard.daovoice.io）
 
-这需要在其官网注册一个账号并获取app_id，在`_config.yml`文件中进行配置。
+这需要在其官网注册一个账号并获取app_id，在主题中的`_config.yml`文件中进行配置。
+
+```bash
+daovoice:
+  enable: true
+  app_id: 651b562f
+```
+
 
 ### 统计功能
 
@@ -87,7 +153,15 @@ search:
 
 ### 博客制作过程中遇到的问题及其解决方法
 
-在完成这个项目时遇到的问题并不是很多。一个问题是在编写markdown文章时难免会出现插入大量图片的情况，每次插入都需要去关心图片的地址会非常麻烦，使用图床时还需要上传。这里的解决方案是下载PicGo自动化工具和markdown编辑器Typora。Typora能够配置图片插入时的动作，搭配PicGo可以在插入时自动上传到图床且插入正确的图片地址。
+在完成这个项目时遇到的问题并不是很多，在完成博客的时候我考虑到一些过程中可以优化的地方。
+
+一个是在编写markdown文章时难免会出现插入大量图片的情况，每次插入都需要去关心图片的地址会非常麻烦，使用图床时还需要上传。这里的解决方案是下载PicGo自动化工具和markdown编辑器Typora。Typora能够配置图片插入时的动作，搭配PicGo可以在插入时自动上传到图床且插入正确的图片地址。
+
+基于以上，我在截图插入markdown时会自动上传至图床并反馈正确的地址，在编写文档时节省了不少时间。
+
+另一个是
+
+
 
 ## 总结
 
