@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-  # 触发条件2：手动按钮
-  workflow_dispatch:
 
 # 这里放环境变量
 env:
