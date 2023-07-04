@@ -67,7 +67,6 @@ jobs:
                npm install hexo-cli -g
                npm install
                npm install hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git hexo-generator-search hexo-wordcount --save
-               cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
       - name: Deploy hexo
         run: |
