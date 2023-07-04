@@ -155,13 +155,89 @@ daovoice:
 
 在完成这个项目时遇到的问题并不是很多，在完成博客的时候我考虑到一些过程中可以优化的地方。
 
-一个是在编写markdown文章时难免会出现插入大量图片的情况，每次插入都需要去关心图片的地址会非常麻烦，使用图床时还需要上传。这里的解决方案是下载PicGo自动化工具和markdown编辑器Typora。Typora能够配置图片插入时的动作，搭配PicGo可以在插入时自动上传到图床且插入正确的图片地址。
-
-基于以上，我在截图插入markdown时会自动上传至图床并反馈正确的地址，在编写文档时节省了不少时间。
-
-另一个是
+- 一个是在编写markdown文章时难免会出现插入大量图片的情况，每次插入都需要去关心图片的地址会非常麻烦，使用图床时还需要上传。这里的解决方案是下载PicGo自动化工具和markdown编辑器Typora。Typora能够配置图片插入时的动作，搭配PicGo可以在插入时自动上传到图床且插入正确的图片地址。基于以上，我在截图插入markdown时会自动上传至图床并反馈正确的地址，在编写文档时节省了不少时间。
 
 
+- 另一个是能够在提交main分支的同时自动部署博客到Github Pages。这里我使用的是Github Actions功能，使用该功能需要配置仓库的公钥和私钥。因为是第一次使用这个功能，尝试了几次都失败了，原因是nodejs依赖配置出现了问题。在`.github`目录下workflows下编写`deploy.yml`即可，代码如下：
+
+  ```bash
+  # Action 的名字
+  name: Hexo Auto Deploy
+  
+  on:
+    # 触发条件1：main 分支收到 push 后执行任务。
+    push:
+      branches:
+        - main
+  
+  # 这里放环境变量
+  env:
+    # Hexo 编译后使用此 git 用户部署到 github 仓库
+    GIT_USER: DhuShen
+    # Hexo 编译后使用此 git 邮箱部署到 github 仓库
+    GIT_EMAIL: massd2002@163.com
+    # Hexo 编译后要部署的 github 仓库
+    GIT_DEPLOY_REPO: dhushen/dhushen.github.io
+    # Hexo 编译后要部署到的分支
+    GIT_DEPLOY_BRANCH: pages
+  
+    # 注意替换为你的 GitHub 源仓库地址
+    GIT_SOURCE_REPO: git@github.com:dhushen/dhushen.github.io.git
+  
+  jobs:
+    build:
+      name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+      runs-on: ubuntu-latest
+      if: github.event.repository.owner.id == github.event.sender.id
+      strategy:
+        matrix:
+          os: [ubuntu-18.04]
+          node_version: [18.x]
+  
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+  
+        - name: Checkout deploy repo
+          uses: actions/checkout@v2
+          with:
+            repository: ${{ env.GIT_DEPLOY_REPO }}
+            ref: ${{ env.GIT_DEPLOY_BRANCH }}
+            path: .deploy_git
+  
+        - name: Use Node.js ${{ matrix.node_version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node_version }}
+  
+        - name: Configuration environment
+          env:
+            HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+          run: |
+            sudo timedatectl set-timezone "Asia/Shanghai"
+            mkdir -p ~/.ssh/
+            echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+            ssh-keyscan -t rsa e.coding.net >> ~/.ssh/known_hosts
+            git config --global user.name $GIT_USER
+            git config --global user.email $GIT_EMAIL
+  
+        - name: Install dependencies
+          run: |
+                 npm install hexo-cli -g
+                 npm install
+                 npm install hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git hexo-generator-search hexo-wordcount --save
+  
+        - name: Deploy hexo
+          run: |
+            npm run deploy
+  
+  ```
+
+  对main分支git push后可以发现博客自动部署上去了
+
+  ![](http://rx4hz3911.hd-bkt.clouddn.com/image-20230704160905662.png)
 
 ## 总结
 
